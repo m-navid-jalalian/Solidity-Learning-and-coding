@@ -1,0 +1,33 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.18;
+/*another ways to write 'pragma':
+pragma solidity >=0.4.5;
+pragma solidity >=0.4.5 <=0.8.15; */
+
+contract FirstContract {
+
+    /*Defination of state variables:
+    type-declaration-name ;       */
+    string public firstStr; 
+
+
+/*  Access Modifier:
+    
+    Public: can be access from inside and out side of smart contract.
+    Private: can be access just inside the contract.
+    Internal: Access from inside the own contarat and its inheritant.
+    External (just for functions):  just can be call from outside the contract.
+*/
+
+    constructor () {
+        firstStr = "Hello Word";
+    }
+/*  constructor is used for kind of actions in smart contract
+    it run just once when smart contract deploy on block chain
+    like get the address of smart contract owner
+    or determining the initial number of tokens
+    also set the initial value of state variable
+*/
+
+
+}
