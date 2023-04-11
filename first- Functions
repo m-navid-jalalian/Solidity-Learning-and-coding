@@ -1,0 +1,42 @@
+//SPDX-License-Identifier: MIT
+pragma solidity 0.8.18;
+
+contract Hello {
+    string public helloStr;
+    constructor () {
+        helloStr= "Hello World!";
+    }
+    function setWord (string memory newValue) public {
+        helloStr=newValue;
+    }
+
+/*  
+    Define a Function:
+  
+        function *<function name> (<input parameters>) *<access modifire> *<state mutability> returns(<output types>) {
+            return <output variables>;
+        }
+  
+    Memory types: storage , memory , call_data/stack
+    * 'memory' always use after define this kind of state in body of functions: string , struct , array , mapping , bytes
+    State Mutability: pure , view , blank(Do not write anything)
+    Access Modifire: public , private , internal , external
+*/
+
+    // call by value function //
+    function getWord() public view returns (string memory) {
+        return helloStr;
+    }
+
+    // call by value reference //
+    function getWord2() public view returns (string memory output) {
+        output=helloStr;
+    }
+
+    // pure function (no writing or reading state variable) //
+    function getWord3() public pure returns (string memory) {
+        string memory memoryVariable="output from memory variable";
+        return memoryVariable;
+    }
+}
+
