@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.18;
+
+contract Hello {
+    
+    string public helloStr= "initial value";
+
+    constructor() {
+        helloStr= "Hello";
+    }
+
+    function setHello (string memory) public {
+        helloStr="Wellcom to solidity";
+    }
+
+    function getHello () public view returns (string memory) {
+        return helloStr;
+    }
+
+}
