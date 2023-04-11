@@ -38,5 +38,18 @@ contract Hello {
         string memory memoryVariable="output from memory variable";
         return memoryVariable;
     }
+
+    // return the variable in this function does not availabe beacuse its not pure or view //
+    function getWord4() public returns (string memory) {
+        helloStr="Navid";
+        return helloStr; //in this funtion does not return anything
+    }
+
+    // return from function more than one variable //
+    function getWord5() public pure returns (string memory,string memory) {
+        string memory newStr="Wellcom";
+        string memory newStr2="to Solidity";
+        return (newStr,newStr2);
+    }
 }
 
