@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.18;
+
+contract CompareValue {
+
+    function twoCompareValue (uint num1, uint num2) public view returns (string memory) {
+        if(num1> num2)
+            return ("num1 is bigger")
+        else if(num1== num2)
+            return  ("They are equal!")
+        else (num2< num1)
+            return  ("num2 is bigger")
+    }
+}
