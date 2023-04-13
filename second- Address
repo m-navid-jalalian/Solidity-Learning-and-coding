@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.18;
+
+contract Address {
+/*      we have two kind of address in solidity:
+        1.Accounts
+        2.Contracts
+        ---------------------------------------
+        Initial value of ech addres is 0 = address(0) = 0x0000000000000000000000000000000000000000  */
+    address public contractAdr;
+    address public ownerAdr;   
+
+    constructor () {
+        ownerAdr= msg.sender;
+        contractAdr= address(this); // 'this' means this cntract and address(this) give us the contract address
+    }
+/*  in Solidity functions two kind of solidity are availabe to read:
+    1. msg.value  : amount of payment of who deploy the contract
+    2. msg.sender : address of who deploy the contract     */
+
+    function payment() payable public {  //just in payable function you can get money from user
+        if (msg.sender< 1 ether)
+            revert("you need to pay 1 ether");
+    }
