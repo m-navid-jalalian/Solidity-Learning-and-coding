@@ -31,9 +31,9 @@ contract Address {
         return ownerAdr.balance/10**18; //give us amount of account in ether
     }
 
-    function deconstructor() public {
-        if (msg.sender== ownerAdr)
-            selfdestruct (payable (ownerAdr));
+    function deconstructor() public { //this function by using of "selfdestruct" make contract off
+        if (msg.sender== ownerAdr)    //and make all data to initial value. after calling this function its not availbe anymore
+            selfdestruct (payable (ownerAdr)); //after excute this order all money will revert to "ownerAdr"
         else 
             revert("Only for OWNER is available!");
     }
