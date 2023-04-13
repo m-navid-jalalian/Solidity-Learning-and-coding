@@ -22,3 +22,19 @@ contract Address {
         if (msg.sender< 1 ether)
             revert("you need to pay 1 ether");
     }
+
+    function getContractBalance() public view returns(uint) {
+        return contractAdr.balance; // ".balance" is a propety to know the value (wei) of accounts or contracts
+    }
+
+    function getOwnerAdrBalance() public view returns(uint) {
+        return ownerAdr.balance/10**18; //give us amount of account in ether
+    }
+
+    function deconstructor() public {
+        if (msg.sender== ownerAdr)
+            selfdestruct (payable (ownerAdr));
+        else 
+            revert("Only for OWNER is available!");
+    }
+}
