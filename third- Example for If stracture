@@ -4,6 +4,7 @@ pragma solidity 0.8.18;
 contract CompareValue {
 
     function twoCompareValue (uint num1, uint num2) public view returns (string memory) {
+        string memory result= "Processing PLZ wait..."
         if(num1> num2)
             result= ("num1 is bigger");
         else if(num1== num2)
