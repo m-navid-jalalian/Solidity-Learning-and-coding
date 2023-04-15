@@ -1,0 +1,40 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.15;
+
+contract StateTransition {
+
+    uint startTime;
+    uint currentTime;
+    //Enums can be used to create custom types with a finite set of ‘constant values’
+    enum State {
+        Reg,    //0
+        Vote,   //1
+        Count   //2
+    }
+    State state; //for using Enum we can use the Enum's name as type and define a variable
+
+    constructor () {   //initializing the state variable
+        startTime = block.timestamp;
+        currentTime = block.timestamp;
+        state=State.Reg;
+    }
+    
+    /* we can do above initializing in a funtion too, in that case when we call the 
+       funtion then the values will be set. Example:
+
+    function start() public {
+        startTime = block.timestamp;
+        currentTime = block.timestamp;
+        state=State.Reg;        
+    }*/
+
+    function updateState() public {    // this funtion updating the contract state
+        currentTime = block.timestamp; //updating current time
+        if (currentTime<= (startTime + 10 seconds)) 
+            state= State.Reg;
+        else if (currentTime<= (startTime + 20 seconds))   
+            state= State.Vote;
+        else 
+            state= State.Count;
+    }
+}
