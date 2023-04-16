@@ -1,0 +1,29 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.7.0; //using old version to make over flow and fix it.
+/*
+    Syntax fo Error Handling in Solidity:
+
+    if(condition) ----> revert("error message")
+    assert(command or condition)
+    require(condition, "error message")
+
+    modifire : for checking the codes outside of functions
+    ---------------------
+    for Debugging:
+
+    event
+    hardhat -> using console library
+*/
+contract ErroHandling {
+
+    uint8 public num = 100;
+
+    function incrementV1(uint8 val) public { // if val=160
+        uint8 oldNum = num; // num = 100
+        num = num + val;    // num = 100+160 = 260 (but max of uint8 is 256 so it will be 4)
+        if (oldNum> num)   // 100 > 4
+        revert ("Overflow Occured!");   // Overflow Occured!
+    }
+
+}
+
