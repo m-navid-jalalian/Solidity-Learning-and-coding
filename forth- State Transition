@@ -37,4 +37,28 @@ contract StateTransition {
         else 
             state= State.Count;
     }
+    // getting current state of contract
+    function getState() public view returns (string memory) {
+        string memory stateStr;
+        if (state== State.Reg) 
+            stateStr= "Regestration is now open";
+        else if (state== State.Vote) 
+            stateStr= "Voting";
+        else 
+            stateStr= "Processing of counting";
+
+        return stateStr;
+    }
+
+    function getStartTime() public view returns (uint) {
+        return startTime;
+    }
+
+    function getCurrentTime() public  view returns (uint) {
+        return block.timestamp;
+    }
+
+    function getLastUpdatedTime() public view returns (uint) {
+        return currentTime;
+    }
 }
