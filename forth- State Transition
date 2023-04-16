@@ -32,8 +32,8 @@ contract StateTransition {
         currentTime = block.timestamp; //updating current time
         if (currentTime<= (startTime + 10 seconds)) 
             state= State.Reg;
-        else if (currentTime<= (startTime + 20 seconds))   
-            state= State.Vote;
+        else if (currentTime<= (startTime + 20 seconds))   // Time unit in Solidity:
+            state= State.Vote;                             // seconds , minutes , hours , days , weeks , years
         else 
             state= State.Count;
     }
