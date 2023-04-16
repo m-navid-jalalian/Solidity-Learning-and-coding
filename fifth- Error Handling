@@ -18,12 +18,20 @@ contract ErroHandling {
 
     uint8 public num = 100;
 
+    // Error Handling by if statement:
     function incrementV1(uint8 val) public { // if val=160
         uint8 oldNum = num; // num = 100
         num = num + val;    // num = 100+160 = 260 (but max of uint8 is 256 so it will be 4)
         if (oldNum> num)   // 100 > 4
         revert ("Overflow Occured!");   // Overflow Occured!
     }
+
+    // Error Handling by assert:
+    function incrementV2(uint8 val2) public {
+        uint8 oldNum = num;
+        num = num + val2;
+        assert(oldNum<= num );  // in assert we define the true comdition, so if the condition isnt availabe
+    }                           // funtion will be reverted
 
 }
 
