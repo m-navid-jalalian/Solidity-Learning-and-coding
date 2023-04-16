@@ -28,15 +28,16 @@ contract StateTransition {
         state=State.Reg;        
     }*/
 
-    function updateState() public {    // this funtion updating the contract state
-        currentTime = block.timestamp; //updating current time
-        if (currentTime<= (startTime + 10 seconds)) 
+    function updateState() public {        // this funtion updating the contract state
+        currentTime = block.timestamp;     //updating current time
+        if (currentTime<= (startTime + 10 seconds))                // First 10 seconds
             state= State.Reg;
-        else if (currentTime<= (startTime + 20 seconds))   // Time unit in Solidity:
-            state= State.Vote;                             // seconds , minutes , hours , days , weeks , years
-        else 
+        else if (currentTime<= (startTime + 20 seconds))          // Second 10 seconds
+            state= State.Vote;                             
+        else                                                       // Third 10 seconds
             state= State.Count;
-    }
+    }       // Time unit in Solidity: seconds , minutes , hours , days , weeks , years
+    
     // getting current state of contract
     function getState() public view returns (string memory) {
         string memory stateStr;
