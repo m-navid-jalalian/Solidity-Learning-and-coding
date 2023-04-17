@@ -1,3 +1,32 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8;
 
+contract Arrays {
+
+    // one dimential arrays
+    // dynamic arrays
+    uint8[] ary1;               // []
+    uint8[] ary2= [1,2,3];      // [1,2,3]
+
+    // arrays with constant value
+    uint8[3] ary3;              // [0,0,0]
+    uint8[3] ary4= [1,2,3];     // [1,2,3]
+
+    // tow dimential arrays
+    // dynamic arrays
+    uint8[][] ary5;                  // [][]
+    // arrays with constant value
+    uint8[2,3] ary6;                            // [ [0,0],[0,0],[0,0] ]
+    uint8[2,3] ary7= [ [1,2],[3,4],[5,6] ];     // [ [1,2],[3,4],[5,6] ]
+
+/*  Arrays function and properties:
+
+    ary.length;
+    ary[i];
+    ary[i][j]= x;
+
+    ary.push(x);    // [1,2,3] ---> [1,2,3,x]
+    ary.pop();      // [1,2,3,x] ---> [1,2,3]
+    * puch and pop funtions use just for dtnamic arrays (they change arrays size)
+
+    delete ary[i];  //make the defualt value of i's array                        */
