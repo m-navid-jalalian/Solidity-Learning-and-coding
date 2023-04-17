@@ -27,11 +27,29 @@ contract ErroHandling {
     }
 
     // Error Handling by assert:
-    function incrementV2(uint8 val2) public {
+    function incrementV2(uint8 val) public {
         uint8 oldNum = num;
-        num = num + val2;
-        assert(oldNum<= num );  // in assert we define the true comdition, so if the condition isnt availabe
+        num = num + val;
+        assert(oldNum<= num );  // in assert we define the true condition, so if the condition isnt availabe
     }                           // funtion will be reverted
 
+    // Error Handling by require:
+    function incrementV3(uint8 val) public {
+        require(num+ val>= num, "Overflow Occured!"); 
+        // require use in first of function and check if condition is not true then revert the function
+        num = num + val;
+    }
+
+/*  in Solidity there is a facility ffor being in COP pattern (condition oriented programming)
+    that is say dont use conditions that can change the way of funtion, in the functions
+    so we can use ' modifire '                                                                  */
+
+    modifier checkOverFlow(uint8 val){   //beacuse we have entry in function, we define val here
+        require(num+ val>= num, "Overflow Occured!");   //condition for prevent Overflow
+        _;      // "Place Holder" for body function that specifies the condition place before 
+    }          // body of function or after that.
+    function incrementV4(uint8 val) public checkOverFlow(val){
+        num= num+ val;
+    }
 }
 
