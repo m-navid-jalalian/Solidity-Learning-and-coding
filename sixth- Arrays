@@ -42,6 +42,15 @@ contract Arrays {
     }
 
     //............... get function ...............//
+    function getArray1() public view returns(uint8[] memory){
+        return ary1;
+    }
+    function getArray5() public view returns(uint8[][] memory){
+        return ary5;
+    }
+    function getArray6() public view returns(uint8[2][3] memory){
+        return ary6;
+    }
     function getArray7() public view returns(uint8[2][4] memory){
         return ary7;
     }
@@ -53,4 +62,32 @@ contract Arrays {
     function getAry7Element(uint i) public view returns(uint8[2] memory){
         return ary7[i];
     }
+    function getAry7Element2(uint i, uint j) public view returns(uint8){
+        return ary7[i][j];
+    }
+
+    //............... set function ...............//
+    function setAry1 (uint8[] memory newAry) public {
+        ary1= newAry;
+    }
+    function setAry5(uint8[][] memory newAry) public {
+        ary5= newAry;
+    }
+    function setAry6(uint8[2][3] memory newAry) public {
+        ary6= newAry;
+    }
+
+    //............... set element function ...............//
+    function setElementAry1 (uint i, uint8 newVal) public {
+        ary1[i]= newVal;
+    }
+    function setElementAry5(uint i, uint8[] memory newVal) public {
+        ary5[i]= newVal;
+    }
+    function setElementAry6(uint i, uint8[2] memory newVal) public {
+        ary6[i]= newVal;
+    }
+
+    //............... pop - push function ...............//
+    function 
 }
