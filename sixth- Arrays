@@ -89,5 +89,24 @@ contract Arrays {
     }
 
     //............... pop - push function ...............//
-    function 
-}
+    function pushAry1 (uint8 i) public {
+        ary1.push(i);
+    }
+    function pushAry5 (uint8[] memory i) public {
+        ary5.push(i);
+    }
+    function popAry1() public {
+        ary1.pop();
+    }
+    function popAry5() public {
+        ary5.pop();
+    }
+
+    //............... delete function ...............//
+    function deleteElementAry1 (uint8 i) public {
+        delete ary1[i];
+    }
+    function deleteElementAry5 (uint8 i) public {
+        delete ary5[i];
+    }
+    }
