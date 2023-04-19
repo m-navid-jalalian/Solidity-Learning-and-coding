@@ -25,4 +25,34 @@ contract Loop {
         return sum;
 
     }
+
+    // ......... example fpr brack syntax in loops ..........//
+    function breakLoop(uint8 num) public view returns(uint, string memory)  {
+        uint index;
+        string memory msg0;
+        for (uint i; i< ary.length; i++) 
+        {
+            if (num== ary[i]) {
+                index= i;
+                msg0= "Done";
+                break;
+            }
+            else msg0= "its not availabe";
+        }
+        return (index, msg0);
+    }
+
+    // ......... example fpr brack syntax in loops ..........//
+    function continueLoop() public view returns (uint){
+        uint sum;
+
+        for (uint i; i< ary.length; i++) 
+        {
+            if (ary[i]%2 != 0) {
+                continue;
+            }
+            sum+= ary[i];
+        }
+        return sum;
+    }
 }
