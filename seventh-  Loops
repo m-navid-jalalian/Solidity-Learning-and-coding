@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8;
+
+contract Loop {
+
+    uint8[] ary= [1,2,3,4,5,6,7];
+
+    function sumArrayElements() public view returns(uint) {
+        uint sum;
+
+        for (uint i; i< ary.length; i++) {     
+        sum += ary[i];
+        }
+        return sum;
+    }
+
+    function sumArrayElementsV2() public view returns(uint) {
+        uint sum;
+        uint i;
+        while (i< ary.length) 
+        {
+            sum+= ary[i];
+            i++;
+        }
+        return sum;
+
+    }
+}
