@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8;
+
+contract GlobalVariables {
+
+    //Information about the last mined block in the network
+    function getBlockInfo () public view returns (uint,uint,uint,address,uint,bytes32){
+
+        return (
+            block.number,               //number of last block that is mine 
+            block.timestamp,            //time of last block that is mine
+            block.difficulty,           //difficulty of mining of last block
+            block.coinbase,             //address of block's miner
+            block.chainid,              // Id of chain that block mined in there
+            blockhash(block.number)     // hash of block
+        );
+    }
+
+    
+}
