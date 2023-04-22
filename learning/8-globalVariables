@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8;
+pragma solidity 0.8.15;
 
 contract GlobalVariables {
 
@@ -16,5 +16,21 @@ contract GlobalVariables {
         );
     }
 
+    //meaure the gas that remain from the "gas limit"
+    //(we set gas limit according to netowrk and speed of transaction we need)
+    function getGasInfo() public view returns(uint, uint, uint){
+        
+        uint remaindeGas = gasleft(); //gasleft ~ remained gas = gas limit - gas used
+        uint gaslimit= block.gaslimit; // limitaion of gas that we can use in the curent block
+        uint basefee= block.basefee; //base fee of each gas 
+
+        return (remaindeGas,gaslimit,basefee);
+    }
+
+    function getMsgInfo() public view returns () {
+        
+        address caller= msg.sender // address of who call the smart contract
+        
+    }
     
 }
