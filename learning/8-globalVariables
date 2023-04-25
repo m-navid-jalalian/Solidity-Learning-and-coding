@@ -27,12 +27,59 @@ contract GlobalVariables {
         return (remaindeGas,gaslimit,basefee);
     }
 
-    function getMsgInfo() public view returns () {
+    //function information
+    function getMsgInfo() public payable returns (address,uint,bytes calldata,bytes4){
         
-        address caller=                 msg.sender // address of who call the smart contract
-        uint sentValue=                 msg.value  // price value that caller pay to smart cantract
-        bytes calldata functionData=    msg.data   // data of funtion in call-data /stack
+        address caller=                 msg.sender;  // address of who call the smart contract
+        uint sentValue=                 msg.value;   // price value that caller pay to smart cantract
+        bytes calldata functionData=    msg.data;    // data of funtion in call-data /stack
+        bytes4 functionId=              msg.sig;     // get uniqe id for each function( actually the signiture that convert to ID
+        /* msg.sig is the first four bytes of callData/stack for a function that specifies the funtion
+        to be called. i.e., its function identifire */
         
+        return (caller, sentValue, functionData, functionId);
+    }
+
+    //contract information
+    function getContractInfo () public view returns (address,uint){
+
+        address contractAddress= address(this); // address of this current contract
+        uint contractBalance= contractAddress.balance;  //smart contract inventory
+
+        return (contractAddress, contractBalance);
+    }
+
+    function encode(uint8 num) public pure returns (bytes memory){
+
+        return abi.encodePacked(num);
+    
+    /* example : input: 2 (in decimal)
+                 return: 0x02 (Hex) */
+    }
+
+    function encode(uint8 num1,uint8 num2) public pure returns (bytes memory){
+
+        return abi.encodePacked(num1,num2);
+    /* example:  input: num1=16 (dec) ~ 10 (HeX)
+                        num2=50 (dec) ~ 32 (Hex)
+                        return: 0x1032 (Hex)  */
     }
     
+    //comparing two string:
+    function compareStr(string memory s1,string memory s2) public pure returns (bool){
+        // " keccak256 " is used for get hash256 of data, if 2 data hash are like each other then data are the same.
+        return ( keccak256(abi.encodePacked(s1)) == keccak256(abi.encodePacked(s2)) );
+    }
+
+    //one of the uses of data hash is to check the accuracy and completeness of data
+    // determine hash of data:
+    function getHash(bytes memory input) public pure returns (bytes32){
+       return keccak256(input); 
+    }
+
+    function getRandoom (uint max) public view returns (uint){
+
+        uint rand= uint (keccak256( abi.encodePacked(block.timestamp,block.difficulty) ));
+        return rand% max;
+    }
 }
