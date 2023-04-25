@@ -31,13 +31,8 @@ contract GlobalVariables {
         
         address caller=                 msg.sender // address of who call the smart contract
         uint sentValue=                 msg.value  // price value that caller pay to smart cantract
-        bytes calldata functionData=    msg.data   // data of funtion
+        bytes calldata functionData=    msg.data   // data of funtion in call-data /stack
         
     }
     
 }
-
-
-
-
-
