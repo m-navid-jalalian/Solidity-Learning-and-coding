@@ -20,14 +20,15 @@ contract GlobalVariables {
     //(we set gas limit according to netowrk and speed of transaction we need)
     function getGasInfo() public view returns(uint, uint, uint){
         
-        uint remaindeGas = gasleft(); //gasleft ~ remained gas = gas limit - gas used
+        uint remaindeGas = gasleft();  //gasleft ~ remained gas = gas limit - gas used
         uint gaslimit= block.gaslimit; // limitaion of gas that we can use in the curent block
-        uint basefee= block.basefee; //base fee of each gas 
+        uint basefee= block.basefee;   //base fee of each gas 
 
         return (remaindeGas,gaslimit,basefee);
     }
 
-    //function information
+    // function information
+    // by this function we can send value to this contract (its payable function)
     function getMsgInfo() public payable returns (address,uint,bytes calldata,bytes4){
         
         address caller=                 msg.sender;  // address of who call the smart contract
