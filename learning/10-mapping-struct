@@ -1,0 +1,59 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.15;
+
+contract MappingStruct {
+
+    struct Bid {
+        address bider;
+        uint bidPrice;
+    }
+
+     // Mapping is a data type used to store large numbers of data
+     // Mapping is similar to array, but its houses are not indexed and its length is not known
+     // The data key is used to find them
+     // Its main advantage is that it does not need to search or navigate to find the data
+     // Data key: left side or input mapping
+    // mapping(key => value)
+    // INPUT/KEY   =>  output/value
+    // mappingName[key] = value;
+    // Note: If you read a house from a mapping that doesn't exist, it returns the default value of the right side of the mapping
+    // mapping of structs
+    mapping(address => uint) public bidsMap1;
+
+    mapping(address => Bid) public bidsMap2;
+
+    
+    function setBidsMap1(address _bider, uint _bidPrice) public {
+        bidsMap1[_bider] = _bidPrice;
+    }
+
+    function setBidsMap2(address _bider, uint _bidPrice) public {
+        bidsMap2[_bider] = Bid(_bider, _bidPrice);
+    }
+
+
+    function getBidsMap1(address _bider) public view returns(uint) {
+        return bidsMap1[_bider];
+    }
+
+
+    function getBidsMap2(address _bider) public view returns(Bid memory) {
+        return bidsMap2[_bider];
+    }
+
+
+    function getBidsMap2_V2(address _bider) public view returns(address, uint) {
+        return (bidsMap2[_bider].bider, bidsMap2[_bider].bidPrice);
+    }
+
+
+    function deleteMap1(address _bider) public {
+        delete bidsMap1[_bider];
+    }
+
+
+    function deleteMap2(address _bider) public {
+        delete bidsMap2[_bider];
+    }
+    
+}
