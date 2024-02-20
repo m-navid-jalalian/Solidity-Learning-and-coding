@@ -1,0 +1,30 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.15;
+
+import "./12-contractA.sol";
+
+
+contract ContractB {
+
+    uint public initialBalanceOfA;
+
+
+    function callBalanceOfA(address addressA) public {
+
+        //Creating an object from the desired contract    
+        ContractA a = ContractA(addressA);
+
+        //Access to public contract's functions 
+        initialBalanceOfA = a.getBalanceOfA();
+
+        //Access to public contract variables 
+        initialBalanceOfA = a.initialBalance();
+    }
+}
+
+
+/*
+    import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/IERC20.sol";
+
+    IERC20(tokenAdr).transfer(account, amount);
+*/
