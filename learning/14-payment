@@ -11,46 +11,46 @@ contract Payment {
     */
 
 
-    // انتقال موجودی به کانترکت در لحظه دپلوی شدن
+    // Transfer inventory to the contract at the time of deployment
     constructor() payable {}
 
-    // افزودن موجودی به کانترکت بعد از دپلوی شدن
+    // Adding inventory to the contract after deployment
     function payToContract() public payable {}
 
 
     function payTransfer(address payable to, uint amount) public {
 
-        // چک کردن موجودی اسمارت کانترکت
+        // Checking the balance of the smart contract
         require(address(this).balance >= amount, "Not enough balance!");
 
-        // این تابع هیچ مقدار برگشتی جهت بررسی صحت انجام تراکنش برگشت نمی دهد
+        // This function does not return any return value to check the correctness of the transaction
         to.transfer(amount);
 
-        // بررسی شرط هایی که ثابت کننده درستی انجام تراکنش باشد
+        // Checking the conditions that prove the correctness of the transaction
         // assert(شرط);
     }
 
 
     function paySend(address payable to, uint amount) public {
 
-        // چک کردن موجودی اسمارت کانترکت
+        //  Checking the balance of the smart contract
         require(address(this).balance >= amount, "Not enough balance!");
 
         bool result = to.send(amount);
 
-        // چک کردن درستی انجام تراکنش
+        // Checking the correctness of the transaction
         require(result == true, "Failure in payment via send!");
     }
 
 
     function payCall(address payable to, uint amount) public {
 
-        // چک کردن موجودی اسمارت کانترکت
+        // Checking the balance of the smart contract
         require(address(this).balance >= amount, "Not enough balance!");
 
         (bool result, ) = to.call{value: amount}("");
 
-        // چک کردن درستی انجام تراکنش
+        // Checking the correctness of the transaction
         require(result == true, "Failure in payment via call!");
     }
 
