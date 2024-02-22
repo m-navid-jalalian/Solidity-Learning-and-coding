@@ -5,13 +5,13 @@ pragma solidity 0.8.15;
 //import "./A.sol"
 contract A {
 
-    // فانکشنی که به صورت ویرچوال باشد را می توان در کانترکت فرزند به شکل متفاوتی بازنویسی کرد
-    // وقتی کلمه ویرچوال را برداریم دیگر بعد از این هیچ کانترکتی نمی تواند پس از مشتق شدن، این تابع را بازنویسی کند
+    // A function that is virtual can be rewritten differently in the child contract
+    // When we remove the "virtual", after this no contract can rewrite this function after being derived.
     function add(uint a, uint b) public pure virtual returns(uint) {
         return a+b;
     }
 
-    // در یک کانترکت شما میتوانید یک تابع با اسم یکسان را با چندین امضای متفاوت داشته باشید
+    // In a contract, you can have a function with the same name with several different signatures
     function add(uint a, uint b, uint c) public pure virtual returns(uint) {
         return a+b+c;
     }
@@ -19,7 +19,7 @@ contract A {
 
 
 // Drived - Child - Inherited
-/* کانترکت فرزند متغیرها و توابعی از کانترکت والد را به ارث می برد که شرایط زیر را داشته باشند
+/* The child contract inherits variables and ,functions from the parent contract that meet the following conditions
     
         Variables:  public, internal
         Functions:  public, internal, external
