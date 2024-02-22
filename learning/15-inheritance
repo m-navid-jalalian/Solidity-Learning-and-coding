@@ -24,12 +24,12 @@ contract A {
         Variables:  public, internal
         Functions:  public, internal, external
     
-    متغیرها و فانکشن های پرایوت فقط برای خود کانترکت قابل مشاهده هستند
+    Private variables and functions are visible only to the contract itself
 */
 
 contract B is A {
    
-    // تا وقتی که تابع جمع را اورراید نکرده باشیم، این تابع از کلاس والد خوانده می شود
+    // As long as we have not overridden the sum function, this function is called from the parent class
     // ولی به محض افزودن نسخه اورراید شده، از تابع جمع این کانترکت استفاده خواهد شد
     uint public result1 = add(2,3);
 
