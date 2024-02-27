@@ -55,7 +55,7 @@ contract B is A {
 
 
     // As long as we do not override the sum function, this function is called from the parent class
-    // ولی به محض افزودن نسخه اورراید شده، از تابع جمع این کانترکت استفاده خواهد شد
+    // But as soon as the overridden version is added, the addition function of this contract will be used
     uint public result2 = add(1,2,3);
 
     uint public result3 = super.add(2,3);   // A.add(2,3);
