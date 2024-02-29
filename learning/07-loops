@@ -26,6 +26,7 @@ contract Loop {
 
     }
 
+
     // ......... example fpr brack syntax in loops ..........//
     function breakLoop(uint8 num) public view returns(uint, string memory)  {
         uint index;
