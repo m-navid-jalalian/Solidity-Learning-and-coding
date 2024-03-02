@@ -30,7 +30,7 @@ contract A {
 contract B is A {
    
     // As long as we have not overridden the sum function, this function is called from the parent class
-    // ولی به محض افزودن نسخه اورراید شده، از تابع جمع این کانترکت استفاده خواهد شد
+    // But as soon as the overridden version is added, the sum function of this contract will be used
     uint public result1 = add(2,3);
 
 
