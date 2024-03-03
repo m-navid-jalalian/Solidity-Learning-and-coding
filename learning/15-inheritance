@@ -17,7 +17,6 @@ contract A {
     }
 }
 
-
 // Drived - Child - Inherited
 /* The child contract inherits variables and ,functions from the parent contract that meet the following conditions
     
