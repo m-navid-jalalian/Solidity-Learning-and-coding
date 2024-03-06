@@ -4,13 +4,13 @@ pragma solidity 0.8.15;
 contract Ballot {
 
     /*
-        موجودیت ها - Entities
+         Entities
             1-Proposal : struct     ,       proposalList : Proposal[]
             2-Voter : struct        ,       voterList : mapping(address => Voter)
             3-chairPerson : address
 
-        عملکردها - Functions
-            1-register() - ثبت نام رای دهنده ها
+         Functions
+            1-register() - voter regestration
             2-vote() - رای دادن
             3-count() - شمارش آرا و اعلام برنده
     */
