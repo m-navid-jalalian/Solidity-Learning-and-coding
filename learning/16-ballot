@@ -29,9 +29,9 @@ contract Ballot {
                                         //  ProposalList[0].voteCount += 1
     
     struct Voter {
-        uint8 vote;         // اندیس پروپوزالی که به آن رای داده شده
-        uint8 weight;       // افراد عادی: 1   و   مدیر: 2
-        bool voted;         // رای داده:true  |  هنوز رای نداده:false
+        uint8 vote;         // Index of the voted proposal
+        uint8 weight;       // normal person: 1   manager: 2
+        bool voted;         //voted: true  |  did not vote :false
     }
 
     mapping(address => Voter) public voterList;
