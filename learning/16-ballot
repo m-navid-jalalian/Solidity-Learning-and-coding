@@ -11,8 +11,8 @@ contract Ballot {
 
          Functions
             1-register() - voter regestration
-            2-vote() - رای دادن
-            3-count() - شمارش آرا و اعلام برنده
+            2-vote() - voting
+            3-count() - Counting votes and announcing the winner
     */
 
     ///////////////////////////////////
