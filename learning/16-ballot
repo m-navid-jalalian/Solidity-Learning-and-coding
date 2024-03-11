@@ -42,9 +42,9 @@ contract Ballot {
 
         chairPerson = msg.sender;
 
-        // regester of manager
-        // weight : 0   => ثبت نام نکرده
-        // weight > 0   => ثبت نام انجام داده
+        // register of manager
+        // weight : 0   => did not register
+        // weight > 0   => registered
         voterList[chairPerson].weight = 2;
 
         for(uint i=0; i<proposalCount; i++) {
