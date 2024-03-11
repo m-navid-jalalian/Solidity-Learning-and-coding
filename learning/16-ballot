@@ -42,7 +42,7 @@ contract Ballot {
 
         chairPerson = msg.sender;
 
-        // ثبت نام مدیر جلسه
+        // regester of manager
         // weight : 0   => ثبت نام نکرده
         // weight > 0   => ثبت نام انجام داده
         voterList[chairPerson].weight = 2;
