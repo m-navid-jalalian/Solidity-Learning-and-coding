@@ -60,7 +60,7 @@ contract Ballot {
     /*  Call only by chairPerson   */
     function register(address voterAdr) public {
 
-        // فقط مدیر اجازه ثبت نام بقیه راهی دهنده ها را دارد
+        // Only the administrator has the permission to register other senders
         require(msg.sender == chairPerson, "Only chairperson can call register()");
 
         // مدیر نباید برای خودش ثبت نام انجام دهد
