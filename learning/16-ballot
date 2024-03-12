@@ -63,7 +63,7 @@ contract Ballot {
         // Only the administrator has the permission to register other senders
         require(msg.sender == chairPerson, "Only chairperson can call register()");
 
-        // مدیر نباید برای خودش ثبت نام انجام دهد
+        // The administrator should not register for him/herself
         require(voterAdr != chairPerson, "Chairperson Can't Register Again!");
 
         // ثبت نام شونده نباید قبلا رای داده باشد
