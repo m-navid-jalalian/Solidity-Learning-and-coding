@@ -1,0 +1,25 @@
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8;
+
+contract Auction {
+
+    address public owner;       //address of smart contract's owner
+    address public beneficiary; //owner of goods owner
+
+    uint256 public auctionStartTime;    //the specified time for the start of the auction
+    uint256 public auctionEndTime;      //the specified time for the end of the auction
+
+    uint256 public highestBid;          //highest price
+    address public highestBider;        //aaderss of highest price person
+
+    mapping( address => uint256) pendingRefunds; 
+
+    struct Bid {
+        address bider;
+        uint256 bidPrice;
+    }
+
+
+
+
+}
