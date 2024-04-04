@@ -22,7 +22,7 @@ contract Auction {
     }
 
     Bid[] internal bidArray; //define a array of structs
-                        // [{bider1,bidPrice1},{bider2,bidPrice2},...]
+                             // [{bider1,bidPrice1},{bider2,bidPrice2},...]
 
     constructor() {
         owner= msg.sender;
@@ -30,6 +30,16 @@ contract Auction {
 
     modifier onlyOwner {
         require (msg.sender== owner,"Only owner can call this function!");
+        _;
+    }
+
+    modifier isValidTime {
+        require (block.timestamp< auctionEndTime,"Auction has been ended!");
+        _;
+    }
+
+    modifier isHighestBid {
+        require (msg.value> highestBid, "Value is less than highest bid!");
         _;
     }
 
@@ -44,7 +54,7 @@ contract Auction {
         auctionEndTime= block.timestamp + _deadlineDur; //deadline duration is on seconds
     }
 
-    function bid() public payable {
+    function bid() public isValidTime payable {
     }
 
     function refunds() public returns(bool){
@@ -53,7 +63,10 @@ contract Auction {
     function payToBeneficiary() public onlyOwner returns(bool){
     }
 
+    //If the auction's time has ended,it updates the flag
     function endAuction() public onlyOwner {
+        require(block.timestamp> auctionEndTime,"Auction can't end at this time!");
+        ended= true;
     }
 
     function getBid() public view returns(Bid[] memory){
