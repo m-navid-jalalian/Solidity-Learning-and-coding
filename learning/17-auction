@@ -21,7 +21,7 @@ contract Auction {
         uint256 bidPrice;
     }
 
-    Bid[] internal bid; //define a array of structs
+    Bid[] internal bidArray; //define a array of structs
                         // [{bider1,bidPrice1},{bider2,bidPrice2},...]
 
     constructor() {
@@ -33,7 +33,42 @@ contract Auction {
         _;
     }
 
-    function startAuction() public onlyOwner{
+    function startAuction(address _beneficiary, uint256 _basePrice, uint256 _deadlineDur) public onlyOwner{
         
+        beneficiary = _beneficiary;
+        //at the bigging of the auction, the beneficiary is considered the winner by determining the basePrice.
+        highestBid = _basePrice;
+        highestBider = _beneficiary;
+        
+        auctionStartTime= block.timestamp;
+        auctionEndTime= block.timestamp + _deadlineDur; //deadline duration is on seconds
     }
+
+    function bid() public payable {
+    }
+
+    function refunds() public returns(bool){
+    }
+
+    function payToBeneficiary() public onlyOwner returns(bool){
+    }
+
+    function endAuction() public onlyOwner {
+    }
+
+    function getBid() public view returns(Bid[] memory){
+    }
+
+    function getWinner() public view returns(address,uint256){
+        return(highestBider,highestBid);
+    }
+
+    function paySend(address to,uint256 amount) public returns(bool){
+        require(address(this).balance >amount, "NOT enough Balance!");
+        bool result= payable(to).send(amount);
+        require(result == true, "Payment is failure via Send!");
+        return result;
+    }
+
+
 }
