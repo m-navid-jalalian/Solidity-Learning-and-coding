@@ -39,6 +39,7 @@ contract Auction {
     }
 
     modifier isHighestBid {
+        //offer price should be more than the highest bid 
         require (msg.value> highestBid, "Value is less than highest bid!");
         _;
     }
@@ -54,7 +55,18 @@ contract Auction {
         auctionEndTime= block.timestamp + _deadlineDur; //deadline duration is on seconds
     }
 
-    function bid() public isValidTime payable {
+    function bid() public isValidTime isHighestBid payable {
+        
+        //in start of auction when someone set the higher bid
+        //this condition prevent to refund his/her bid to beneficiary account
+        if(highestBider != beneficiary)
+        pendingRefunds[highestBider] += highestBid; //the last highest bid save in pendingRefunds
+        
+        //updating the highest bid price
+        highestBid= msg.value;
+        highestBider= msg.sender;
+
+        bidArray.push(Bid(highestBider,highestBid));
     }
 
     function refunds() public returns(bool){
