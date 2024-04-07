@@ -121,6 +121,4 @@ contract Auction {
         require(result == true, "Payment is failure via Send!");
         return result;
     }
-
-
 }
